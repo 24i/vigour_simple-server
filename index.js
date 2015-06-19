@@ -7,18 +7,20 @@ var server = app.listen(options.port, function () {
   console.log('Simple-Server listening on port', port)
 })
 
-app.get('/', function (req, res) {
-  res.send('Yes hello this is Simple-Server')
-})
+app.use(express.static('public'))
 
-app.get('/lol', function (req, res) {
-  res.status(404).send('no jokes')
-})
+// app.get('/', function (req, res) {
+//   res.send('Yes hello this is Simple-Server')
+// })
 
-app.get('/fun', function (req, res) {
-  res.status(503).send('does not compute')
-})
+// app.get('/lol', function (req, res) {
+//   res.status(404).send('no jokes')
+// })
 
-app.get('/wait', function (req, res) {
+// app.get('/fun', function (req, res) {
+//   res.status(503).send('does not compute')
+// })
+
+// app.get('/wait', function (req, res) {
   
-})
+// })
