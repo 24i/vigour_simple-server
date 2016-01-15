@@ -13,23 +13,23 @@ http.createServer(app).listen(http_port, function () {
   console.log('Simple-Server listening for http requests on port', http_port)
 })
 
-if (options.ssl !== 'false') {
-  var ssl
+// if (options.ssl !== 'false') {
+//   var ssl
 
-  try {
-    ssl = require('./ssl')
-  } catch (e) {
-    console.log('failed to read ssl info:\n', e)
-  }
+//   try {
+//     ssl = require('./ssl')
+//   } catch (e) {
+//     console.log('failed to read ssl info:\n', e)
+//   }
 
-  if (ssl) {
-    console.log('use ssl!')
-    var ssl_port = options.ssl
-    https.createServer(ssl, app).listen(ssl_port, function () {
-      console.log('Simple-Server listening for https requests on port', ssl_port)
-    })
-  }
-}
+//   if (ssl) {
+//     console.log('use ssl!')
+//     var ssl_port = options.ssl
+//     https.createServer(ssl, app).listen(ssl_port, function () {
+//       console.log('Simple-Server listening for https requests on port', ssl_port)
+//     })
+//   }
+// }
 
 app.use(express.static('public'))
 
