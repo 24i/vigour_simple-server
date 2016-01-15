@@ -7,6 +7,8 @@ var app = express()
 
 var http_port = options.http
 
+console.log('creating http server on', http_port)
+
 http.createServer(app).listen(http_port, function(){
   console.log('Simple-Server listening for http requests on port', http_port)
 })
