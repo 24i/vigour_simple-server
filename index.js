@@ -9,23 +9,26 @@ var http_port = options.http
 
 console.log('creating http server on', http_port)
 
-http.createServer(app).listen(http_port, function(){
+http.createServer(app).listen(http_port, function () {
   console.log('Simple-Server listening for http requests on port', http_port)
 })
 
-var ssl
+if (options.ssl !== 'false') {
+  var ssl
 
-try{
-  ssl = require('./ssl')
-}catch(e){
-  console.log('failed to read ssl info:\n', e)
-}
+  try {
+    ssl = require('./ssl')
+  } catch (e) {
+    console.log('failed to read ssl info:\n', e)
+  }
 
-if(ssl) {
-  var ssl_port = options.ssl
-  https.createServer(ssl, app).listen(ssl_port, function(){
-    console.log('Simple-Server listening for https requests on port', ssl_port)
-  })
+  if (ssl) {
+    console.log('use ssl!')
+    var ssl_port = options.ssl
+    https.createServer(ssl, app).listen(ssl_port, function () {
+      console.log('Simple-Server listening for https requests on port', ssl_port)
+    })
+  }
 }
 
 app.use(express.static('public'))
@@ -43,5 +46,5 @@ app.use(express.static('public'))
 // })
 
 // app.get('/wait', function (req, res) {
-  
+
 // })
